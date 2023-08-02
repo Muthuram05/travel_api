@@ -1,5 +1,7 @@
 import openai
 import config
+import re
+
 openai.api_key = config.api_key
 messages = [{"role": "system", "content": "You are a intelligent assistant."}]
 
@@ -21,6 +23,19 @@ while True:
         tourist_spots = data.splitlines()
     else:
         tourist_spots = data.splitlines()[1:-1]
-    print(tourist_spots)
+    result = []
+    for i in tourist_spots:
+        x = re.sub(r'\s+', '', i)
+        x = x.split("-")
+        if (i == ''):
+            pass
+        else:
+            district_name = x[0]
+            latitude, longitude = x[1].split(',')
+            if latitude[-1] == "N" or "E":
+                latitude = latitude[:6]
+                longitude = longitude[:6]
+            result.append([district_name,float(latitude),float(longitude)])
+    print(result)
     messages.append({"role": "assistant", "content": reply})
-# tell 5 tourist spot between chennai to tirunelveli(only names and tell like name - latitude,longtitude and no need to specify E N and degree in longatitu and latitude)
+# tell 5 tourist spot between chennai to tirunelveli(only names and tell like place name - latitude,longtitude and no need to specify E N and degree in longatitude and latitude)
