@@ -3,7 +3,9 @@ import openai
 import config
 from flask_cors import CORS
 import re
-openai.api_key = config.api_key
+
+api_key = config.api_key + config.api_key1 + config.api_key2
+openai.api_key = api_key
 messages = [{"role": "system", "content": "You are a intelligent assistant."}]
 
 app = Flask(__name__)
