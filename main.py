@@ -3,7 +3,7 @@ import config
 import re
 
 
-api_key = config.api_key + config.api_key1 + config.api_key2
+api_key = "sk-WOs9YNsnaqvQq3S" + "ln8kLT3BlbkFJvmXoaBHYQJ" + "OOz3w9eEjm"
 openai.api_key = api_key
 messages = [{"role": "system", "content": "You are a intelligent assistant."}]
 

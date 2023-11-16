@@ -1,11 +1,19 @@
 from flask import Flask, request
 import openai
+import config
+from flask_cors import CORS
+import re
 
-openai.api_key = "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"
+api_key = "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"
+openai.api_key = api_key
 messages = [{"role": "system", "content": "You are a intelligent assistant."}]
 
-while True:
-    message = input("User : ")
+app = Flask(__name__)
+CORS(app)
+
+# @app.route('/', methods=['GET', 'POST'])
+def parse_request(message):
+    # message = str(request.data)
     if message:
         messages.append(
             {"role": "user", "content": message},
@@ -13,7 +21,30 @@ while True:
         chat = openai.ChatCompletion.create(
             model="gpt-3.5-turbo", messages=messages
         )
-
     reply = chat.choices[0].message.content
     print(f"ChatGPT: {reply}")
+    data = reply
+    if (data[0] == "1") or (data[0] == 1):
+        tourist_spots = data.splitlines()
+    elif (data[1] == "1") or (data[1] == 1):
+        tourist_spots = data.splitlines()
+    else:
+        tourist_spots = data.splitlines()[1:-1]
+    result = []
+    for i in tourist_spots:
+        x = re.sub(r'\s+', '', i)
+        x = x.split("-")
+        if (i == ''):
+            pass
+        else:
+            district_name = x[0]
+            latitude, longitude = x[1].split(',')
+            if latitude[-1] == "N" or "E":
+                latitude = latitude[:6]
+                longitude = longitude[:6]
+            result.append([district_name, float(latitude), float(longitude)])
+    print(result)
     messages.append({"role": "assistant", "content": reply})
+    return result
+
+parse_request("Hii")
