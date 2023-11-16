@@ -1,7 +1,7 @@
 from flask import Flask, request
 import openai
 
-openai.api_key = "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"
+openai.api_key = "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"
 messages = [{"role": "system", "content": "You are a intelligent assistant."}]
 
 while True:
