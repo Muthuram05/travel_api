@@ -41,3 +41,4 @@ while True:
     print(result)
     messages.append({"role": "assistant", "content": reply})
 # tell 5 tourist spot between chennai to tirunelveli(only names and tell like place name - latitude,longtitude and no need to specify E N and degree in longatitude and latitude)
+#friends','family','couple','students','devotional','riding','hills stations','adventure'''

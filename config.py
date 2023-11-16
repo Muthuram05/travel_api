@@ -1,3 +1,3 @@
-api_key = "sk-HkV1Ni4P"
-api_key1 = "P00uBCzftUjcT3BlbkFJ"
-api_key2 = "nvpPOlBXRGAA90CHsnFQ"
+api_key = "sk-uUuieWg2"
+api_key1 = "4xGxJmgX2lkST3BlbkF"
+api_key2 = "JmxdCJdzjuSgnL2jm7Fov"
