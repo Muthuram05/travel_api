@@ -1,8 +1,8 @@
 import openai
 import re
+import os
 
-
-api_key = os.getenv("API_KEY")
+api_key = os.environ["api_key"]
 openai.api_key = api_key
 messages = [{"role": "system", "content": "You are a intelligent assistant."}]
 
