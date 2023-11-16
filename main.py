@@ -1,9 +1,12 @@
 import openai
-import config
 import re
+import os
+from dotenv import load_dotenv
 
+# Load environment variables from .env file
+load_dotenv()
 
-api_key = "sk-WOs9YNsnaqvQq3S" + "ln8kLT3BlbkFJvmXoaBHYQJ" + "OOz3w9eEjm"
+api_key = os.getenv("API_KEY")
 openai.api_key = api_key
 messages = [{"role": "system", "content": "You are a intelligent assistant."}]
 
